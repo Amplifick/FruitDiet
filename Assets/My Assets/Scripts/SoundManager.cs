@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FruitDiet
 {
-    public class Player : CharacterController
+    public class SoundManager : MonoBehaviour
     {
 
     }

@@ -4,9 +4,10 @@ using UnityEngine;
 
 namespace FruitDiet
 {
-    public class Player : CharacterController
+    public class DataManager : MonoBehaviour
     {
-
+        [Header("References")]
+        public Score score;
     }
 }
 

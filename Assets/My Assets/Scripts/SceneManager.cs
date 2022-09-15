@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace FruitDiet
 {
-    public class Player : CharacterController
+    public class SceneManager : MonoBehaviour
     {
-
+        
     }
 }
 
