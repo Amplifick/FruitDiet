@@ -11,6 +11,7 @@ namespace FruitDiet
 
         [Header("Input Parameters")]
         public Vector2 movementInput;
+        public bool jumpInput;
 
         private void OnEnable()
         {
@@ -29,6 +30,7 @@ namespace FruitDiet
         public void HandleAllInputs()
         {
             movementInput = inputActions.Player.Move.ReadValue<Vector2>();
+            jumpInput = inputActions.Player.Jump.IsPressed();
         }
     }
 }

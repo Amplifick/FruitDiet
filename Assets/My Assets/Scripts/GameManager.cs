@@ -36,11 +36,6 @@ namespace FruitDiet
             soundInstance = GetComponent<SoundManager>();
             stateInstance = GetComponent<StateMachine>();
         }
-
-        private void Update()
-        {
-            inputInstance.HandleAllInputs();
-        }
     }
 }
 
