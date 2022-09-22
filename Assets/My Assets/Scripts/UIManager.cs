@@ -1,18 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Lean.Gui;
 
-public class UIManager : MonoBehaviour
+namespace FruitDiet
 {
-    // Start is called before the first frame update
-    void Start()
+    public class UIManager : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        #region Tutorial
+        public void KeyPressed(Image image, Sprite newIcon, GameObject outlineVFX, LeanToggle leanToggle)
+        {
+            image.sprite = newIcon;
+            leanToggle.On = true;
+            if (outlineVFX)
+                outlineVFX.SetActive(true);
+        }
+
+        public void KeyReleased(Image image, Sprite newIcon, GameObject outlineVFX, LeanToggle leanToggle)
+        {
+            image.sprite = newIcon;
+            leanToggle.On = false;
+            if (outlineVFX)
+                outlineVFX.SetActive(false);
+        }
+        #endregion
     }
 }
+

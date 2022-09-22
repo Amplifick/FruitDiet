@@ -30,8 +30,8 @@ namespace FruitDiet
         {
             HandleMovementAndJumping();
 
-            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-
+            anim.SetFloat("Speed", Mathf.Abs(horizontal));
+            
             if (!isFacingRight && horizontal > 0f)
             {
                 Flip();
@@ -46,6 +46,12 @@ namespace FruitDiet
         {
             Movement();
             Jump();
+        }
+
+        private void Movement()
+        {
+            horizontal = GameManager.Instance.inputInstance.movementInput.x;
+            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
         }
 
         private void Jump()
@@ -71,10 +77,7 @@ namespace FruitDiet
             transform.localScale = localScale;
         }
 
-        private void Movement()
-        {
-            horizontal = GameManager.Instance.inputInstance.movementInput.x;
-        }
+
     }
 }
 
