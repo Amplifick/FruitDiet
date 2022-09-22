@@ -11,16 +11,22 @@ namespace FruitDiet
     public class UIManager : MonoBehaviour
     {
 
-        GameObject currentInterface;
-        public void RepeatInteraction()
+        public GameObject currentInterface;
+        public void RepeatInteraction(LeanWindow lw)
         {
-            currentInterface.SetActive(true);
+            StartCoroutine(Leanhandle(lw));
         }
         public void NextInteraction(GameObject nextInteraction)
         {
             currentInterface.SetActive(false);
             currentInterface = nextInteraction;
             currentInterface.SetActive(true);   
+        }
+        private IEnumerator Leanhandle(LeanWindow lw)
+        {
+            lw.On = false;
+            yield return new WaitForSeconds(1f);
+            lw.On = true;
         }
 
 
