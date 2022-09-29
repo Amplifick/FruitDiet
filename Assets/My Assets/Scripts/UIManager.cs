@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using UnityEngine.UI;
 using Lean.Gui;
 
@@ -16,6 +15,7 @@ namespace FruitDiet
         {
             currentInterface.SetActive(true);
         }
+
         public void NextInteraction(GameObject nextInteraction)
         {
             currentInterface.SetActive(false);
