@@ -22,7 +22,7 @@ namespace FruitDiet
 
         private void Awake()
         {
-            uIManager = FindObjectOfType<UIManager>();
+            uIManager = GameManager.Instance.uiInstance;
             image = GetComponent<Image>();
             leanToggle = GetComponent<LeanToggle>();
         }
@@ -67,7 +67,7 @@ namespace FruitDiet
         #region Keys Pressed
         private bool WPressed()
         {
-            if (uIManager.GetComponent<GameManager>().GetComponent<InputManager>().movementInput.y > 0)
+            if (GameManager.Instance.inputInstance.movementInput.y > 0)
             {
                 return true;
             }
@@ -79,7 +79,7 @@ namespace FruitDiet
 
         private bool SPressed()
         {
-            if (uIManager.GetComponent<GameManager>().GetComponent<InputManager>().movementInput.y < 0)
+            if (GameManager.Instance.inputInstance.movementInput.y < 0)
             {
                 return true;
             }
@@ -91,7 +91,7 @@ namespace FruitDiet
 
         private bool DPressed()
         {
-            if (uIManager.GetComponent<GameManager>().GetComponent<InputManager>().movementInput.x > 0)
+            if (GameManager.Instance.inputInstance.movementInput.x > 0)
             {
                 return true;
             }
@@ -102,7 +102,7 @@ namespace FruitDiet
         }
         private bool APressed()
         {
-            if (uIManager.GetComponent<GameManager>().GetComponent<InputManager>().movementInput.x < 0)
+            if (GameManager.Instance.inputInstance.movementInput.x < 0)
             {
                 return true;
             }
