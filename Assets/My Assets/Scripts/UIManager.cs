@@ -4,12 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using Lean.Gui;
 
-
 namespace FruitDiet
 {
     public class UIManager : MonoBehaviour
     {
-
         public GameObject currentInterface;
         public void RepeatInteraction(LeanWindow lw)
         {
@@ -29,6 +27,26 @@ namespace FruitDiet
             lw.On = true;
         }
 
+        #region Buttons Extra Functions
+
+        public void AddLoadSceneFunctionToButton(LeanButton leanButton, string sceneName)
+        {
+            leanButton.OnClick.AddListener(() =>
+            {
+                GameManager.Instance.sceneInstance.LoadScene(sceneName);
+            });
+        }
+
+        public void AddChangeStateOfGameFunctionToButton(LeanButton leanButton, StateOfGame newStateOfGame)
+        {
+            leanButton.OnClick.AddListener(() =>
+            {
+                GameManager.Instance.stateInstance.ChangeCurrentState(newStateOfGame);
+            });
+        }
+
+
+        #endregion
 
         #region Tutorial
         public void KeyPressed(Image image, Sprite newIcon, GameObject outlineVFX, LeanToggle leanToggle)
