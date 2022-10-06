@@ -32,7 +32,16 @@ namespace FruitDiet
         public void UpdateMarkerPosition(RectTransform markerPosition, Vector3 newPosition)
         {
             markerPosition.localPosition = newPosition;
+        }
 
+        public void EnableUIElement(GameObject gameObject)
+        {
+            gameObject.SetActive(true);
+        }
+
+        public void DisableUIElement(GameObject gameObject)
+        {
+            gameObject.SetActive(false);
         }
 
         #endregion
