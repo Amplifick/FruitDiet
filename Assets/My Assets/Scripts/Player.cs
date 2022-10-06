@@ -7,7 +7,7 @@ namespace FruitDiet
     public class Player : CharacterController
     {
         [Header("References")]
-        
+
 
         [Header("Physic's & Transform")]
         public Rigidbody2D rb;
@@ -31,7 +31,7 @@ namespace FruitDiet
             HandleMovementAndJumping();
 
             anim.SetFloat("Speed", Mathf.Abs(horizontal));
-            
+
             if (!isFacingRight && horizontal > 0f)
             {
                 Flip();
@@ -50,8 +50,16 @@ namespace FruitDiet
 
         private void Movement()
         {
-            horizontal = GameManager.Instance.inputInstance.movementInput.x;
-            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            if (GameManager.Instance.stateInstance.currentState == StateOfGame.OnGame)
+            {
+                horizontal = GameManager.Instance.inputInstance.movementInput.x;
+                rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            }
+            else if (GameManager.Instance.stateInstance.currentState == StateOfGame.OnTutorial)
+            {
+                horizontal = GameManager.Instance.inputInstance.movementInput.x;
+            }
+
         }
 
         private void Jump()

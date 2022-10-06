@@ -48,8 +48,11 @@ namespace FruitDiet
 
         private void Update()
         {
-            Vector3 newPos = new Vector3(target.position.x, 0f, -10f);
-            mainCamera.transform.position = Vector3.Slerp(mainCamera.transform.position, newPos, followSpeed * Time.deltaTime);
+            if(target != null)
+            {
+                Vector3 newPos = new Vector3(target.position.x, 0f, -10f);
+                mainCamera.transform.position = Vector3.Slerp(mainCamera.transform.position, newPos, followSpeed * Time.deltaTime);
+            }
 
             inputInstance.HandleAllInputs();
         }
