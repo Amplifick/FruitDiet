@@ -18,7 +18,7 @@ namespace FruitDiet
         {
             currentInterface.SetActive(false);
             currentInterface = nextInteraction;
-            currentInterface.SetActive(true);   
+            currentInterface.SetActive(true);
         }
         private IEnumerator Leanhandle(LeanWindow lw)
         {
@@ -26,6 +26,16 @@ namespace FruitDiet
             yield return new WaitForSeconds(1f);
             lw.On = true;
         }
+
+        #region Balance Bar Functions
+
+        public void UpdateMarkerPosition(RectTransform markerPosition, Vector3 newPosition)
+        {
+            markerPosition.localPosition = newPosition;
+
+        }
+
+        #endregion
 
         #region Buttons Extra Functions
 

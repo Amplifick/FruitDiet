@@ -8,12 +8,8 @@ namespace FruitDiet
     {
         [Header("Item Setting's")]
         [Tooltip("The amount that will be added or substracted from the balance bar")]
-        public float balanceAmount;
+        public float itemBalanceValue;
 
-        private void OnTriggerEnter(Collider other)
-        {
-            
-        }
     }
 }
 

@@ -7,10 +7,22 @@ namespace FruitDiet
     public class Elements : MonoBehaviour
     {
         [Header("References")]
-        public Scenario scenarioInstance;
+        private Scenario scenarioInstance;
 
-        //[Header("Element Setting's")]
-        //public GameObject elementPrefab;
+        private void Awake()
+        {
+            scenarioInstance = FindObjectOfType<Scenario>();
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                scenarioInstance.GetNewMarkerPosition();
+                Destroy(gameObject);
+            }
+        }
+
     }
 }
 
