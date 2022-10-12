@@ -34,6 +34,11 @@ namespace FruitDiet
             //soundTimerDictionary[Sound.whatEverSoundNeedsATimer] = 0f;
         }
 
+        public void PlayOneShotAudio(AudioSource source, AudioClip clip)
+        {
+            source.PlayOneShot(clip);
+        }
+
         public void PlaySoundOneShot(Sound sound)
         {
             if (CanPlaySound(sound))

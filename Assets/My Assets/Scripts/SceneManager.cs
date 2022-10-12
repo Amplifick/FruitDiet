@@ -10,6 +10,11 @@ namespace FruitDiet
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
         }
+
+        public void ReloadActiveScene()
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }
 

@@ -56,6 +56,22 @@ namespace FruitDiet
             });
         }
 
+        public void AddReloadSceneFunctionToButton(LeanButton leanButton)
+        {
+            leanButton.OnClick.AddListener(() =>
+            {
+                GameManager.Instance.sceneInstance.ReloadActiveScene();
+            });
+        }
+
+        public void AddPlayOneShotAudioFunctionToButton(LeanButton leanButton, AudioSource source, AudioClip clip)
+        {
+            leanButton.OnClick.AddListener(() =>
+            {
+                GameManager.Instance.soundInstance.PlayOneShotAudio(source, clip);
+            });
+        }
+
         public void AddChangeStateOfGameFunctionToButton(LeanButton leanButton, StateOfGame newStateOfGame)
         {
             leanButton.OnClick.AddListener(() =>
