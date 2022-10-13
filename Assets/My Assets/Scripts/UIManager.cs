@@ -29,6 +29,7 @@ namespace FruitDiet
 
         #region Balance Bar Functions
 
+        
         public void UpdateMarkerPosition(RectTransform markerPosition, Vector3 newPosition)
         {
             markerPosition.localPosition = newPosition;

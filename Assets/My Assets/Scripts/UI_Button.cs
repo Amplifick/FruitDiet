@@ -17,7 +17,7 @@ namespace FruitDiet
 
         [Header("Bools")]
         [SerializeField] private bool changeScene;
-        [SerializeField] private bool changeToOnGameState;
+        [SerializeField] private bool changeToOnTutorialState, changeToOnGameState;
         [SerializeField] private bool reloadScene;
         [SerializeField] private bool playSound;
         [SerializeField] private bool enableAfterTime;
@@ -26,6 +26,9 @@ namespace FruitDiet
         {
             if (changeScene)
                 GameManager.Instance.uiInstance.AddLoadSceneFunctionToButton(GetComponent<LeanButton>(), sceneNameToLoad);
+
+            if (changeToOnTutorialState)
+                GameManager.Instance.uiInstance.AddChangeStateOfGameFunctionToButton(GetComponent<LeanButton>(), StateOfGame.OnTutorial);
 
             if (changeToOnGameState)
                 GameManager.Instance.uiInstance.AddChangeStateOfGameFunctionToButton(GetComponent<LeanButton>(), StateOfGame.OnGame);
@@ -38,7 +41,6 @@ namespace FruitDiet
 
             if (enableAfterTime)
             {
-                Debug.Log("added");
                 GameManager.Instance.uiInstance.EnableUIOnTime(GetComponent<CanvasGroup>(), timeToEnableUI);
             }
 
@@ -46,10 +48,50 @@ namespace FruitDiet
 
         public void CheckBeforeLoadingScene()
         {
-            if(inputField.text != "")
+            if (inputField.text != "")
             {
                 GameManager.Instance.sceneInstance.LoadScene(sceneNameToLoad);
             }
         }
+
+        public void CheckWASDBeforeLoadingScene()
+        {
+            UI_Key[] keys = FindObjectsOfType<UI_Key>();
+
+            bool w = false, a = false, s = false, d = false;
+
+            if (keys != null)
+            {
+                foreach (UI_Key key in keys)
+                {
+                    if (key.wPressed)
+                    {
+                        w = true;
+                    }
+                    if (key.aPressed)
+                    {
+                        a = true;
+                    }
+                    if (key.sPressed)
+                    {
+                        s = true;
+                    }
+                    if (key.dPressed)
+                    {
+                        d = true;
+                    }
+                }
+
+                if (w && a && s && d)
+                {
+                    GameManager.Instance.sceneInstance.LoadScene(sceneNameToLoad);
+                    GameManager.Instance.stateInstance.ChangeCurrentState(StateOfGame.OnGame);
+                }
+
+            }
+
+
+        }
+
     }
 }

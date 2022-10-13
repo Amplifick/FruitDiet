@@ -9,8 +9,6 @@ namespace FruitDiet
         ClickOnUI,
         PickItem,
         PlayerDie,
-        GuideTalkingStory,
-        GuideExplainingTutorial,
     }
 
     public class SoundManager : MonoBehaviour

@@ -20,6 +20,9 @@ namespace FruitDiet
         public Sprite pressedSprite;
         public GameObject outlineVFX;
 
+        [Header("Keys Pressed")]
+        public bool wPressed, aPressed, sPressed, dPressed;
+
         private void Awake()
         {
             uIManager = GameManager.Instance.uiInstance;
@@ -30,37 +33,42 @@ namespace FruitDiet
         private void Update()
         {
             #region Handling the Keys actions
-            if ((typeOfKey == Key.W))
+
+            if(GameManager.Instance.stateInstance.currentState == StateOfGame.OnTutorial)
             {
-                if (WPressed())
-                    uIManager.KeyPressed(image, pressedSprite, outlineVFX, leanToggle);
-                else
-                    uIManager.KeyReleased(image, unpressedSprite, outlineVFX, leanToggle);
+                if ((typeOfKey == Key.W))
+                {
+                    if (WPressed())
+                        uIManager.KeyPressed(image, pressedSprite, outlineVFX, leanToggle);
+                    else
+                        uIManager.KeyReleased(image, unpressedSprite, outlineVFX, leanToggle);
+                }
+
+                if ((typeOfKey == Key.A))
+                {
+                    if (APressed())
+                        uIManager.KeyPressed(image, pressedSprite, outlineVFX, leanToggle);
+                    else
+                        uIManager.KeyReleased(image, unpressedSprite, outlineVFX, leanToggle);
+                }
+
+                if ((typeOfKey == Key.S))
+                {
+                    if (SPressed())
+                        uIManager.KeyPressed(image, pressedSprite, outlineVFX, leanToggle);
+                    else
+                        uIManager.KeyReleased(image, unpressedSprite, outlineVFX, leanToggle);
+                }
+
+                if ((typeOfKey == Key.D))
+                {
+                    if (DPressed())
+                        uIManager.KeyPressed(image, pressedSprite, outlineVFX, leanToggle);
+                    else
+                        uIManager.KeyReleased(image, unpressedSprite, outlineVFX, leanToggle);
+                }
             }
 
-            if ((typeOfKey == Key.A))
-            {
-                if (APressed())
-                    uIManager.KeyPressed(image, pressedSprite, outlineVFX, leanToggle);
-                else
-                    uIManager.KeyReleased(image, unpressedSprite, outlineVFX, leanToggle);
-            }
-
-            if ((typeOfKey == Key.S))
-            {
-                if (SPressed())
-                    uIManager.KeyPressed(image, pressedSprite, outlineVFX, leanToggle);
-                else
-                    uIManager.KeyReleased(image, unpressedSprite, outlineVFX, leanToggle);
-            }
-
-            if ((typeOfKey == Key.D))
-            {
-                if (DPressed())
-                    uIManager.KeyPressed(image, pressedSprite, outlineVFX, leanToggle);
-                else
-                    uIManager.KeyReleased(image, unpressedSprite, outlineVFX, leanToggle);
-            }
             #endregion
         }
 
@@ -69,6 +77,7 @@ namespace FruitDiet
         {
             if (GameManager.Instance.inputInstance.movementInput.y > 0)
             {
+                wPressed = true;
                 return true;
             }
             else
@@ -81,6 +90,7 @@ namespace FruitDiet
         {
             if (GameManager.Instance.inputInstance.movementInput.y < 0)
             {
+                sPressed = true;
                 return true;
             }
             else
@@ -93,6 +103,7 @@ namespace FruitDiet
         {
             if (GameManager.Instance.inputInstance.movementInput.x > 0)
             {
+                dPressed = true;
                 return true;
             }
             else
@@ -104,6 +115,7 @@ namespace FruitDiet
         {
             if (GameManager.Instance.inputInstance.movementInput.x < 0)
             {
+                aPressed = true;
                 return true;
             }
             else

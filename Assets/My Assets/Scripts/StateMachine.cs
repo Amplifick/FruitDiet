@@ -6,6 +6,7 @@ namespace FruitDiet
 {
     public enum StateOfGame
     {
+        OnMenu,
         OnTutorial,
         OnGame,
     }

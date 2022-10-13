@@ -2322,7 +2322,9 @@ MonoBehaviour:
   audioSource: {fileID: 1801085808}
   audioClip: {fileID: 8300000, guid: 4bc0782c8ba81b14695411bb910215f3, type: 3}
   timeToEnableUI: 0
+  inputField: {fileID: 0}
   changeScene: 0
+  changeToOnTutorialState: 0
   changeToOnGameState: 0
   reloadScene: 0
   playSound: 1
@@ -3085,7 +3087,9 @@ MonoBehaviour:
   audioSource: {fileID: 1801085808}
   audioClip: {fileID: 8300000, guid: 42a93df13a08d784cb8f2ce5f9bea78f, type: 3}
   timeToEnableUI: 0
+  inputField: {fileID: 0}
   changeScene: 0
+  changeToOnTutorialState: 1
   changeToOnGameState: 0
   reloadScene: 0
   playSound: 1
@@ -4659,6 +4663,10 @@ MonoBehaviour:
   unpressedSprite: {fileID: 21300000, guid: 3af9ff592981d11439f7b23b029a1284, type: 3}
   pressedSprite: {fileID: 21300000, guid: e254add896bd2254089a34f36a5eb61c, type: 3}
   outlineVFX: {fileID: 0}
+  wPressed: 0
+  aPressed: 0
+  sPressed: 0
+  dPressed: 0
 --- !u!114 &1227106240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4795,6 +4803,10 @@ MonoBehaviour:
   unpressedSprite: {fileID: 21300000, guid: cb692f6aeb2874341a0a3d5b7463bd10, type: 3}
   pressedSprite: {fileID: 21300000, guid: 2e5c437e25bdabc48ad96ff39640fc28, type: 3}
   outlineVFX: {fileID: 0}
+  wPressed: 0
+  aPressed: 0
+  sPressed: 0
+  dPressed: 0
 --- !u!114 &1254897705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4975,9 +4987,9 @@ MonoBehaviour:
   onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 791669437}
-        m_TargetAssemblyTypeName: Lean.Gui.LeanToggle, LeanGUI
-        m_MethodName: TurnOff
+      - m_Target: {fileID: 1258705235}
+        m_TargetAssemblyTypeName: FruitDiet.UI_Button, Assembly-CSharp
+        m_MethodName: CheckWASDBeforeLoadingScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5041,8 +5053,10 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   audioClip: {fileID: 0}
   timeToEnableUI: 0
-  changeScene: 1
-  changeToOnGameState: 1
+  inputField: {fileID: 0}
+  changeScene: 0
+  changeToOnTutorialState: 0
+  changeToOnGameState: 0
   reloadScene: 0
   playSound: 0
   enableAfterTime: 0
@@ -5598,7 +5612,9 @@ MonoBehaviour:
   audioSource: {fileID: 1801085808}
   audioClip: {fileID: 8300000, guid: c71f6f9a96da5654cb955a966e28fdf8, type: 3}
   timeToEnableUI: 0
+  inputField: {fileID: 0}
   changeScene: 0
+  changeToOnTutorialState: 0
   changeToOnGameState: 0
   reloadScene: 0
   playSound: 1
@@ -6007,6 +6023,10 @@ MonoBehaviour:
   unpressedSprite: {fileID: 21300000, guid: 48741e3c180fa774d937218c2d4d5329, type: 3}
   pressedSprite: {fileID: 21300000, guid: 1199695dd5edad04c8e5f400d1a98a9c, type: 3}
   outlineVFX: {fileID: 0}
+  wPressed: 0
+  aPressed: 0
+  sPressed: 0
+  dPressed: 0
 --- !u!114 &1510168620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7123,6 +7143,10 @@ MonoBehaviour:
   unpressedSprite: {fileID: 21300000, guid: 8ca542e6f13161e479ae62ea8b3242a5, type: 3}
   pressedSprite: {fileID: 21300000, guid: 6aba37359091c8847bde6fcb7c6db358, type: 3}
   outlineVFX: {fileID: 0}
+  wPressed: 0
+  aPressed: 0
+  sPressed: 0
+  dPressed: 0
 --- !u!114 &1707503746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8249,7 +8273,9 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   audioClip: {fileID: 0}
   timeToEnableUI: 0
+  inputField: {fileID: 0}
   changeScene: 0
+  changeToOnTutorialState: 0
   changeToOnGameState: 0
   reloadScene: 1
   playSound: 0
