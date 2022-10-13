@@ -27,7 +27,14 @@ namespace FruitDiet
         public Transform itemsParent;
         [Tooltip("This will handle the spawning rate when we are fighting against the boss")]
         public float spawningRate;
+
+        [Header("UI Elements")]
         public GameObject greenOverlay, yellowOverlay;
+        public GameObject loseUI;
+
+        [Header("Sounds")]
+        [SerializeField] private AudioClip loseAudioClip;
+        [SerializeField] private bool canPlay;
 
 
         private void Awake()
@@ -56,7 +63,21 @@ namespace FruitDiet
 
             GameManager.Instance.uiInstance.UpdateMarkerPosition(markerTransform, newPos);
 
-            if(balanceValue < -400)
+            if (balanceValue == -600 || balanceValue == 600)
+            {
+                if (canPlay)
+                {
+                    GameManager.Instance.uiInstance.EnableUIElement(loseUI);
+                    GameManager.Instance.soundInstance.SetAudioVolume(FindObjectOfType<AudioSource>(), 0.035f);
+                    GameManager.Instance.soundInstance.PlaySoundOneShot(loseAudioClip);
+                    GameManager.Instance.inputInstance.canMove = false;
+                    canPlay = false;
+                    return;
+                }
+
+            }
+
+            if (balanceValue < -400)
             {
                 GameManager.Instance.uiInstance.EnableUIElement(yellowOverlay);
             }
@@ -72,6 +93,8 @@ namespace FruitDiet
             {
                 GameManager.Instance.uiInstance.DisableUIElement(greenOverlay);
             }
+
+
         }
 
         #region Platform Functions

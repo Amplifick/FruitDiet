@@ -56,6 +56,18 @@ namespace FruitDiet
             });
         }
 
+        public void EnableUIOnTime(CanvasGroup uiObject, float time)
+        {
+            StartCoroutine(EnableAfterTime(uiObject,time));
+        }
+
+        private IEnumerator EnableAfterTime(CanvasGroup uiObject, float time)
+        {
+            yield return new WaitForSeconds(time);
+            uiObject.alpha = 1;
+
+        }
+
         public void AddReloadSceneFunctionToButton(LeanButton leanButton)
         {
             leanButton.OnClick.AddListener(() =>

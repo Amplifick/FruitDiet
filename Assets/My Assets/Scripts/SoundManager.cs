@@ -36,7 +36,13 @@ namespace FruitDiet
 
         public void PlayOneShotAudio(AudioSource source, AudioClip clip)
         {
+            source.Stop();
             source.PlayOneShot(clip);
+        }
+
+        public void SetAudioVolume(AudioSource source, float volume)
+        {
+            source.volume = volume;
         }
 
         public void PlaySoundOneShot(Sound sound)
@@ -52,6 +58,19 @@ namespace FruitDiet
 
                 oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
             }
+
+        }
+
+        public void PlaySoundOneShot(AudioClip clip)
+        {
+            if (oneShotAudioGameObject == null)
+            {
+                oneShotAudioGameObject = new GameObject("One Shot Sound");
+                oneShotAudioSource = oneShotAudioGameObject.AddComponent<AudioSource>();
+                oneShotAudioGameObject.transform.SetParent(transform);
+            }
+
+            oneShotAudioSource.PlayOneShot(clip);
 
         }
 
