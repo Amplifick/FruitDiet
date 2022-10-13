@@ -21,6 +21,7 @@ namespace FruitDiet
         [SerializeField] private bool reloadScene;
         [SerializeField] private bool playSound;
         [SerializeField] private bool enableAfterTime;
+        [SerializeField] private bool reloadSceneAndEnableInput;
 
         private void Awake()
         {
@@ -42,6 +43,11 @@ namespace FruitDiet
             if (enableAfterTime)
             {
                 GameManager.Instance.uiInstance.EnableUIOnTime(GetComponent<CanvasGroup>(), timeToEnableUI);
+            }
+
+            if (reloadSceneAndEnableInput)
+            {
+                GameManager.Instance.uiInstance.AddReloadSceneAndEnableInputFunctionToButton(GetComponent<LeanButton>());
             }
 
         }
