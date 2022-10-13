@@ -22,6 +22,7 @@ namespace FruitDiet
         public float yOffSet = 2f;
         public Transform target;
         private Camera mainCamera;
+        private bool hasTarget;
 
         private void Awake()
         {
@@ -41,15 +42,28 @@ namespace FruitDiet
             dataInstance = GetComponent<DataManager>();
             sceneInstance = GetComponent<SceneManager>();
             soundInstance = GetComponent<SoundManager>();
-            stateInstance = GetComponent<StateMachine>();
-
-            mainCamera = Camera.main;
+            stateInstance = GetComponent<StateMachine>();         
         }
 
         private void Update()
         {
-            Vector3 newPos = new Vector3(target.position.x, 0f, -10f);
-            mainCamera.transform.position = Vector3.Slerp(mainCamera.transform.position, newPos, followSpeed * Time.deltaTime);
+            if(mainCamera == null)
+            {
+                mainCamera = Camera.main;
+            }
+
+            if(target != null)
+            {
+                Vector3 newPos = new Vector3(target.position.x, 0f, -10f);
+                mainCamera.transform.position = Vector3.Slerp(mainCamera.transform.position, newPos, followSpeed * Time.deltaTime);
+            }
+            else
+            {
+                if (stateInstance.currentState == StateOfGame.OnGame)
+                {
+                    target = FindObjectOfType<Player>().transform;
+                }
+            }
 
             inputInstance.HandleAllInputs();
         }

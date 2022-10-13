@@ -6,27 +6,98 @@ namespace FruitDiet
 {
     public class Scenario : MonoBehaviour
     {
+        private const float PLAYER_DISTANCE_SPAWN = 20f;
+
+        [Header("Balance Bar Settings")]
+        [Tooltip("The marker on the UI that indicates the player currrent balance on the balance bar")]
+        public RectTransform markerTransform;
+        [Tooltip("The current amount of balance. This changes when the player recolects an item")]
+        public float balanceValue = 0;
+
         [Header("Level Generation Setting's")]
-        private const float PLAYER_DISTANCE_SPAWN_PLATFORM = 20f;
         [SerializeField] private Player player;
         [SerializeField] private Transform platformsParent;
-        [SerializeField] private Transform firstPlatforms;
+        [SerializeField] private Transform firstPlatform;
         [SerializeField] private Transform platformPrefab;
         private Vector3 lastEndPosition;
 
+        [Header("Item Spawn Settings")]
+        public Item[] foodPrefabs;
+        public SpawnPosition[] spawnPositions;
+        public Transform itemsParent;
+        [Tooltip("This will handle the spawning rate when we are fighting against the boss")]
+        public float spawningRate;
+
+        [Header("UI Elements")]
+        public GameObject greenOverlay, yellowOverlay;
+        public GameObject loseUI;
+
+        [Header("Sounds")]
+        [SerializeField] private AudioClip loseAudioClip;
+        [SerializeField] private bool canPlay;
+
+
         private void Awake()
         {
-            lastEndPosition = firstPlatforms.Find("EndPosition").position;
+            lastEndPosition = firstPlatform.Find("EndPosition").position;
+        }
+
+        private void Start()
+        {
+            InvokeRepeating("SpawnItem",1f, spawningRate);
         }
 
         private void Update()
         {
-            if (Vector3.Distance(player.transform.position, lastEndPosition) < PLAYER_DISTANCE_SPAWN_PLATFORM)
+            if (Vector3.Distance(player.transform.position, lastEndPosition) < PLAYER_DISTANCE_SPAWN)
             {
                 //Spawn another platform
                 SpawnPlatform();
             }
         }
+
+        public void GetNewMarkerPosition()
+        {
+            balanceValue = Mathf.Clamp(balanceValue, -600f, 600f);
+            Vector3 newPos = new Vector3(balanceValue, 0f, 0f);
+
+            GameManager.Instance.uiInstance.UpdateMarkerPosition(markerTransform, newPos);
+
+            if (balanceValue == -600 || balanceValue == 600)
+            {
+                if (canPlay)
+                {
+                    GameManager.Instance.uiInstance.EnableUIElement(loseUI);
+                    GameManager.Instance.soundInstance.SetAudioVolume(FindObjectOfType<AudioSource>(), 0.035f);
+                    GameManager.Instance.soundInstance.PlaySoundOneShot(loseAudioClip);
+                    GameManager.Instance.inputInstance.canMove = false;
+                    canPlay = false;
+                    return;
+                }
+
+            }
+
+            if (balanceValue < -400)
+            {
+                GameManager.Instance.uiInstance.EnableUIElement(yellowOverlay);
+            }
+            else
+            {
+                GameManager.Instance.uiInstance.DisableUIElement(yellowOverlay);
+            }
+            if (balanceValue > 400)
+            {
+                GameManager.Instance.uiInstance.EnableUIElement(greenOverlay);
+            }
+            else
+            {
+                GameManager.Instance.uiInstance.DisableUIElement(greenOverlay);
+            }
+
+
+        }
+
+        #region Platform Functions
 
         private void SpawnPlatform()
         {
@@ -36,9 +107,43 @@ namespace FruitDiet
 
         private Transform SpawnPlatform(Vector3 spawnPosition)
         {
-            Transform platformTransform = Instantiate(platformPrefab,spawnPosition,Quaternion.identity, platformsParent);
+            Transform platformTransform = Instantiate(platformPrefab, spawnPosition, Quaternion.identity, platformsParent);
             return platformTransform;
         }
+
+        #endregion
+
+        #region Item Functions
+
+        private void SpawnItem()
+        {
+            bool freePositions = false;
+
+            foreach (SpawnPosition spawnPosition in spawnPositions)
+            {
+                if (!spawnPosition.hasItem)
+                    freePositions = true;
+            }
+
+            if (!freePositions)
+                return;
+
+            int random = Random.Range(0, foodPrefabs.Length);
+
+            int randomPos = Random.Range(0, spawnPositions.Length);
+
+            while (spawnPositions[randomPos].hasItem)
+            {
+                randomPos = Random.Range(0, spawnPositions.Length);
+            }
+
+            Item item = Instantiate(foodPrefabs[random],spawnPositions[randomPos].transform.position,Quaternion.identity, itemsParent);
+            item.spawnPosIndex = randomPos;
+            spawnPositions[randomPos].hasItem = true;
+            item.DestroySelf();
+        }
+
+        #endregion
     }
 }
 

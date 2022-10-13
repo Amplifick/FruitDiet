@@ -11,6 +11,7 @@ namespace FruitDiet
 
         [Header("Input Parameters")]
         public Vector2 movementInput;
+        public bool canMove;
 
         private void OnEnable()
         {
@@ -28,7 +29,8 @@ namespace FruitDiet
 
         public void HandleAllInputs()
         {
-            movementInput = inputActions.Player.Move.ReadValue<Vector2>();
+            if (canMove)
+                movementInput = inputActions.Player.Move.ReadValue<Vector2>();
         }
     }
 }

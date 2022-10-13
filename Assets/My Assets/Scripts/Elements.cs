@@ -7,10 +7,14 @@ namespace FruitDiet
     public class Elements : MonoBehaviour
     {
         [Header("References")]
-        public Scenario scenarioInstance;
+        [HideInInspector] public Scenario scenarioInstance;
 
-        //[Header("Element Setting's")]
-        //public GameObject elementPrefab;
+        private void Awake()
+        {
+            scenarioInstance = FindObjectOfType<Scenario>();
+        }
+
+
     }
 }
 
