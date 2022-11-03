@@ -17,7 +17,7 @@ namespace FruitDiet
 
         [Header("Bools")]
         [SerializeField] private bool changeScene;
-        [SerializeField] private bool changeToOnTutorialState, changeToOnGameState;
+        [SerializeField] private bool changeToOnTutorialState, changeToOnGameState, changeToOnBossState;
         [SerializeField] private bool reloadScene;
         [SerializeField] private bool playSound;
         [SerializeField] private bool enableAfterTime;
@@ -33,6 +33,9 @@ namespace FruitDiet
 
             if (changeToOnGameState)
                 GameManager.Instance.uiInstance.AddChangeStateOfGameFunctionToButton(GetComponent<LeanButton>(), StateOfGame.OnGame);
+
+            if (changeToOnBossState)
+                GameManager.Instance.uiInstance.AddChangeStateOfGameFunctionToButton(GetComponent<LeanButton>(), StateOfGame.OnBossFight);
 
             if (reloadScene)
                 GameManager.Instance.uiInstance.AddReloadSceneFunctionToButton(GetComponent<LeanButton>());

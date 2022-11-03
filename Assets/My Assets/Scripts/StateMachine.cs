@@ -9,6 +9,7 @@ namespace FruitDiet
         OnMenu,
         OnTutorial,
         OnGame,
+        OnBossFight,
     }
     public class StateMachine : MonoBehaviour
     {

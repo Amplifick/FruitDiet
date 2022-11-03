@@ -269,11 +269,15 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   audioClip: {fileID: 0}
   timeToEnableUI: 3
+  inputField: {fileID: 0}
   changeScene: 0
+  changeToOnTutorialState: 0
   changeToOnGameState: 0
+  changeToOnBossState: 0
   reloadScene: 1
   playSound: 0
   enableAfterTime: 1
+  reloadSceneAndEnableInput: 0
 --- !u!114 &592738582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,7 +563,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 70df26b64f2679545ac6bea00de09cc3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.035
+  m_Volume: 0.04
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -926,11 +930,15 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   audioClip: {fileID: 0}
   timeToEnableUI: 3
+  inputField: {fileID: 0}
   changeScene: 1
+  changeToOnTutorialState: 0
   changeToOnGameState: 0
+  changeToOnBossState: 0
   reloadScene: 0
   playSound: 0
   enableAfterTime: 1
+  reloadSceneAndEnableInput: 0
 --- !u!225 &1777391101
 CanvasGroup:
   m_ObjectHideFlags: 0

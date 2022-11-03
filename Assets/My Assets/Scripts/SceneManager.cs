@@ -15,6 +15,16 @@ namespace FruitDiet
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
         }
+
+        public void PauseGame()
+        {
+
+        }
+
+        public void ResumeGame()
+        {
+
+        }
     }
 }
 

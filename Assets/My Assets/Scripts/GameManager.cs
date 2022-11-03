@@ -62,6 +62,10 @@ namespace FruitDiet
                 {
                     target = FindObjectOfType<Player>().transform;
                 }
+                else if (stateInstance.currentState == StateOfGame.OnBossFight)
+                {
+                    target = FindObjectOfType<CenterOfLevel>().transform;
+                }
             }
 
             inputInstance.HandleAllInputs();

@@ -28,27 +28,50 @@ namespace FruitDiet
         [Tooltip("This will handle the spawning rate when we are fighting against the boss")]
         public float spawningRate;
 
+        [Header("Level Settings")]
+        [SerializeField] private float timeTheRoundLasts;
+        private float currentTime;
+
         [Header("UI Elements")]
-        public GameObject greenOverlay, yellowOverlay;
+        public GameObject greenOverlay;
+        public GameObject yellowOverlay;
         public GameObject loseUI;
+        public GameObject winUI;
 
         [Header("Sounds")]
         [SerializeField] private AudioClip loseAudioClip;
+        [SerializeField] private AudioClip winAudioClip;
         [SerializeField] private bool canPlay;
+        [SerializeField] private bool hasWon;
 
 
         private void Awake()
         {
+            if (GameManager.Instance.stateInstance.currentState == StateOfGame.OnBossFight)
+                return;
+
             lastEndPosition = firstPlatform.Find("EndPosition").position;
         }
 
         private void Start()
         {
-            InvokeRepeating("SpawnItem",1f, spawningRate);
+            if (GameManager.Instance.stateInstance.currentState == StateOfGame.OnBossFight)
+                return;
+
+            InvokeRepeating(nameof(SpawnItem), 1f, spawningRate);
         }
 
         private void Update()
         {
+            if (!canPlay)
+                return;
+
+            if (!hasWon)
+                WinLevelCheck();
+
+            if (GameManager.Instance.stateInstance.currentState == StateOfGame.OnBossFight)
+                return;
+
             if (Vector3.Distance(player.transform.position, lastEndPosition) < PLAYER_DISTANCE_SPAWN)
             {
                 //Spawn another platform
@@ -137,10 +160,30 @@ namespace FruitDiet
                 randomPos = Random.Range(0, spawnPositions.Length);
             }
 
-            Item item = Instantiate(foodPrefabs[random],spawnPositions[randomPos].transform.position,Quaternion.identity, itemsParent);
+            Item item = Instantiate(foodPrefabs[random], spawnPositions[randomPos].transform.position, Quaternion.identity, itemsParent);
             item.spawnPosIndex = randomPos;
             spawnPositions[randomPos].hasItem = true;
             item.DestroySelf();
+        }
+
+        #endregion
+
+        #region Win level Functions
+
+        private void WinLevelCheck()
+        {
+            currentTime += Time.deltaTime;
+
+            if (currentTime >= timeTheRoundLasts)
+            {
+                hasWon = true;
+                GameManager.Instance.uiInstance.EnableUIElement(winUI);
+                GameManager.Instance.sceneInstance.PauseGame();
+                GameManager.Instance.soundInstance.SetAudioVolume(FindObjectOfType<AudioSource>(), 0.035f);
+                GameManager.Instance.soundInstance.PlaySoundOneShot(winAudioClip);
+                GameManager.Instance.inputInstance.canMove = true;
+            }
+
         }
 
         #endregion

@@ -50,7 +50,7 @@ namespace FruitDiet
 
         private void Movement()
         {
-            if (GameManager.Instance.stateInstance.currentState == StateOfGame.OnGame)
+            if (GameManager.Instance.stateInstance.currentState == StateOfGame.OnGame || GameManager.Instance.stateInstance.currentState == StateOfGame.OnBossFight)
             {
                 horizontal = GameManager.Instance.inputInstance.movementInput.x;
                 rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);

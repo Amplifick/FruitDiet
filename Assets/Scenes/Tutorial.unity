@@ -2326,9 +2326,11 @@ MonoBehaviour:
   changeScene: 0
   changeToOnTutorialState: 0
   changeToOnGameState: 0
+  changeToOnBossState: 0
   reloadScene: 0
   playSound: 1
   enableAfterTime: 0
+  reloadSceneAndEnableInput: 0
 --- !u!114 &762805080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3091,9 +3093,11 @@ MonoBehaviour:
   changeScene: 0
   changeToOnTutorialState: 1
   changeToOnGameState: 0
+  changeToOnBossState: 0
   reloadScene: 0
   playSound: 1
   enableAfterTime: 0
+  reloadSceneAndEnableInput: 0
 --- !u!1 &805348500
 GameObject:
   m_ObjectHideFlags: 0
@@ -5049,7 +5053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5db359aae20a9d418a9e5a183c03238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneNameToLoad: TestingScene
+  sceneNameToLoad: Manzana_1
   audioSource: {fileID: 0}
   audioClip: {fileID: 0}
   timeToEnableUI: 0
@@ -5057,9 +5061,11 @@ MonoBehaviour:
   changeScene: 0
   changeToOnTutorialState: 0
   changeToOnGameState: 0
+  changeToOnBossState: 0
   reloadScene: 0
   playSound: 0
   enableAfterTime: 0
+  reloadSceneAndEnableInput: 0
 --- !u!1 &1267618631
 GameObject:
   m_ObjectHideFlags: 0
@@ -5616,9 +5622,11 @@ MonoBehaviour:
   changeScene: 0
   changeToOnTutorialState: 0
   changeToOnGameState: 0
+  changeToOnBossState: 0
   reloadScene: 0
   playSound: 1
   enableAfterTime: 0
+  reloadSceneAndEnableInput: 0
 --- !u!114 &1424673981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8277,9 +8285,11 @@ MonoBehaviour:
   changeScene: 0
   changeToOnTutorialState: 0
   changeToOnGameState: 0
+  changeToOnBossState: 0
   reloadScene: 1
   playSound: 0
   enableAfterTime: 0
+  reloadSceneAndEnableInput: 0
 --- !u!114 &1959987281
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,6 +15,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Tutorial.unity
     guid: 0160c0f5e6649184daa9df179349aa39
   - enabled: 1
-    path: Assets/Scenes/TestingScene.unity
+    path: Assets/Scenes/Manzana World/Manzana_1.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Manzana World/Manzana_2.unity
+    guid: 54a7db166cc78ef4fa94e1be7aa0af8b
+  - enabled: 1
+    path: Assets/Scenes/Manzana World/Manzana_Boss.unity
+    guid: 4513b3757c4aeed45b5ed839a067d61d
+  - enabled: 1
+    path: Assets/Scenes/BuyCharacterScene.unity
+    guid: 1b74e2bd087ca6b41af751393bcd9a38
   m_configObjects: {}
