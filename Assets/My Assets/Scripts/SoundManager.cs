@@ -68,6 +68,7 @@ namespace FruitDiet
                 oneShotAudioGameObject.transform.SetParent(transform);
             }
 
+            oneShotAudioSource.volume = 1f;
             oneShotAudioSource.PlayOneShot(clip);
 
         }

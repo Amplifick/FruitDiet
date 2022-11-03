@@ -21,7 +21,7 @@ namespace FruitDiet
         public float followSpeed = 2f;
         public float yOffSet = 2f;
         public Transform target;
-        private Camera mainCamera;
+        [HideInInspector] public Camera mainCamera;
 
         private void Awake()
         {
@@ -51,6 +51,9 @@ namespace FruitDiet
                 mainCamera = Camera.main;
             }
 
+            if (stateInstance.currentState == StateOfGame.OnMenu)
+                return;
+
             if (target != null)
             {
                 Vector3 newPos = new Vector3(target.position.x, 0f, -10f);
@@ -67,6 +70,7 @@ namespace FruitDiet
                     target = FindObjectOfType<CenterOfLevel>().transform;
                 }
             }
+
 
             inputInstance.HandleAllInputs();
 

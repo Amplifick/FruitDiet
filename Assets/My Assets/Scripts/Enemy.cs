@@ -24,6 +24,8 @@ namespace FruitDiet
         [SerializeField] private float powerDuration;
         [SerializeField] private float normalMoveSpeed;
         [SerializeField] private float onPowerMoveSpeed;
+        [SerializeField] private AnimationCurve curve;
+        [SerializeField] private float shakeCameraDuration;
 
         [Header("Spawn Settings")]
         [SerializeField] private float spawnRate;
@@ -32,6 +34,8 @@ namespace FruitDiet
         [SerializeField] private Transform targetItemPosition;
         [SerializeField] private Transform itemsParent;
 
+        public bool playShake;
+
 
         private void Start()
         {
@@ -39,7 +43,9 @@ namespace FruitDiet
         }
 
         private void Update()
-        {
+        {      
+            anim.SetBool("isOnPower", isOnPower);
+
             if (canUsePower)
             {
                 canUsePower = false;
@@ -72,6 +78,9 @@ namespace FruitDiet
             }
             else
             {
+                if (isOnPower)
+                    return;
+
                 canUsePower = true;
             }
         }
@@ -95,6 +104,27 @@ namespace FruitDiet
                     insItem.DestroyOnBossFight();
                 }
             }
+        }
+
+        public void MakeCameraShake()
+        {
+            StartCoroutine(Shaking(GameManager.Instance.mainCamera));
+        }
+
+        private IEnumerator Shaking(Camera camera)
+        {
+            Vector3 startPos = camera.transform.position;
+            float elapsedTime = 0f;
+
+            while (elapsedTime < shakeCameraDuration)
+            {
+                elapsedTime += Time.deltaTime;
+                float strength = curve.Evaluate(elapsedTime / shakeCameraDuration);
+                camera.transform.position = startPos + Random.insideUnitSphere * strength;
+                yield return null;
+            }
+
+            camera.transform.position = startPos;
         }
     }
 }

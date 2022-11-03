@@ -4525,10 +4525,12 @@ MonoBehaviour:
   changeToOnTutorialState: 0
   changeToOnGameState: 0
   changeToOnBossState: 0
+  changeToOnMenuState: 0
   reloadScene: 0
   playSound: 0
   enableAfterTime: 0
   reloadSceneAndEnableInput: 1
+  resumeGame: 0
 --- !u!114 &1600587735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5306,6 +5308,7 @@ MonoBehaviour:
   loseAudioClip: {fileID: 8300000, guid: f75bb7792a8719848b94fed912ea42b0, type: 3}
   winAudioClip: {fileID: 8300000, guid: 4ae3058be96652c478edbdaaeccd125f, type: 3}
   canPlay: 1
+  hasWon: 0
 --- !u!1 &1912277591
 GameObject:
   m_ObjectHideFlags: 0
@@ -5367,10 +5370,12 @@ MonoBehaviour:
   changeToOnTutorialState: 0
   changeToOnGameState: 0
   changeToOnBossState: 0
+  changeToOnMenuState: 0
   reloadScene: 0
   playSound: 0
   enableAfterTime: 0
   reloadSceneAndEnableInput: 0
+  resumeGame: 1
 --- !u!114 &1912277594
 MonoBehaviour:
   m_ObjectHideFlags: 0
