@@ -15,6 +15,10 @@ namespace FruitDiet
 
     public class Enemy : CharacterController
     {
+        public Scenario scenarioInstance;
+        public AudioSource audioSource;
+        public AudioClip hitGroundClip;
+
         [Header("Power Up Settings")]
         [SerializeField] private bool canUsePower;
         [SerializeField] private bool isOnPower;
@@ -43,7 +47,15 @@ namespace FruitDiet
         }
 
         private void Update()
-        {      
+        {
+            if (!scenarioInstance.canPlay)
+            {
+                anim.SetBool("isOnPower", false);
+                StopAllCoroutines();
+                CancelInvoke();
+                return;
+            }
+
             anim.SetBool("isOnPower", isOnPower);
 
             if (canUsePower)
@@ -125,6 +137,11 @@ namespace FruitDiet
             }
 
             camera.transform.position = startPos;
+        }
+
+        public void PlayHitSFX()
+        {
+            GameManager.Instance.soundInstance.PlayOneShotAudio(audioSource,hitGroundClip);
         }
     }
 }

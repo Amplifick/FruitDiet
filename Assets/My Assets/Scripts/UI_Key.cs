@@ -18,7 +18,6 @@ namespace FruitDiet
         public Key typeOfKey;
         public Sprite unpressedSprite;
         public Sprite pressedSprite;
-        public GameObject outlineVFX;
 
         [Header("Keys Pressed")]
         public bool wPressed, aPressed, sPressed, dPressed;
@@ -34,38 +33,38 @@ namespace FruitDiet
         {
             #region Handling the Keys actions
 
-            if(GameManager.Instance.stateInstance.currentState == StateOfGame.OnTutorial)
+            if (GameManager.Instance.stateInstance.currentState == StateOfGame.OnTutorial)
             {
                 if ((typeOfKey == Key.W))
                 {
                     if (WPressed())
-                        uIManager.KeyPressed(image, pressedSprite, outlineVFX, leanToggle);
+                        uIManager.KeyPressed(image, pressedSprite, leanToggle);
                     else
-                        uIManager.KeyReleased(image, unpressedSprite, outlineVFX, leanToggle);
+                        uIManager.KeyReleased(leanToggle);
                 }
 
                 if ((typeOfKey == Key.A))
                 {
                     if (APressed())
-                        uIManager.KeyPressed(image, pressedSprite, outlineVFX, leanToggle);
+                        uIManager.KeyPressed(image, pressedSprite, leanToggle);
                     else
-                        uIManager.KeyReleased(image, unpressedSprite, outlineVFX, leanToggle);
+                        uIManager.KeyReleased(leanToggle);
                 }
 
                 if ((typeOfKey == Key.S))
                 {
                     if (SPressed())
-                        uIManager.KeyPressed(image, pressedSprite, outlineVFX, leanToggle);
+                        uIManager.KeyPressed(image, pressedSprite, leanToggle);
                     else
-                        uIManager.KeyReleased(image, unpressedSprite, outlineVFX, leanToggle);
+                        uIManager.KeyReleased(leanToggle);
                 }
 
                 if ((typeOfKey == Key.D))
                 {
                     if (DPressed())
-                        uIManager.KeyPressed(image, pressedSprite, outlineVFX, leanToggle);
+                        uIManager.KeyPressed(image, pressedSprite, leanToggle);
                     else
-                        uIManager.KeyReleased(image, unpressedSprite, outlineVFX, leanToggle);
+                        uIManager.KeyReleased(leanToggle);
                 }
             }
 

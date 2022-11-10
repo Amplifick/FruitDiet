@@ -274,10 +274,12 @@ MonoBehaviour:
   changeToOnTutorialState: 0
   changeToOnGameState: 0
   changeToOnBossState: 0
+  changeToOnMenuState: 0
   reloadScene: 1
   playSound: 0
   enableAfterTime: 1
   reloadSceneAndEnableInput: 0
+  resumeGame: 0
 --- !u!114 &592738582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -692,7 +694,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433244042}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 1fee80cf80edd024cb51243d53ae2224, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: a2755b8f47474a04195be177f47ec88b, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 685101718}
@@ -935,10 +937,12 @@ MonoBehaviour:
   changeToOnTutorialState: 0
   changeToOnGameState: 0
   changeToOnBossState: 0
+  changeToOnMenuState: 0
   reloadScene: 0
   playSound: 0
   enableAfterTime: 1
   reloadSceneAndEnableInput: 0
+  resumeGame: 0
 --- !u!225 &1777391101
 CanvasGroup:
   m_ObjectHideFlags: 0

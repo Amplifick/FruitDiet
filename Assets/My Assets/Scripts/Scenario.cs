@@ -1,3 +1,4 @@
+using Lean.Gui;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace FruitDiet
         private const float PLAYER_DISTANCE_SPAWN = 20f;
 
         [Header("Balance Bar Settings")]
+        public RectTransform balanceBarTransform;
         [Tooltip("The marker on the UI that indicates the player currrent balance on the balance bar")]
         public RectTransform markerTransform;
         [Tooltip("The current amount of balance. This changes when the player recolects an item")]
@@ -41,7 +43,8 @@ namespace FruitDiet
         [Header("Sounds")]
         [SerializeField] private AudioClip loseAudioClip;
         [SerializeField] private AudioClip winAudioClip;
-        [SerializeField] private bool canPlay;
+        [SerializeField] private AudioClip winSong;
+        public bool canPlay;
         [SerializeField] private bool hasWon;
 
 
@@ -91,7 +94,7 @@ namespace FruitDiet
                 if (canPlay)
                 {
                     GameManager.Instance.uiInstance.EnableUIElement(loseUI);
-                    GameManager.Instance.soundInstance.SetAudioVolume(FindObjectOfType<AudioSource>(), 0.035f);
+                    GameManager.Instance.soundInstance.SetAudioVolume(Camera.main.GetComponent<AudioSource>(), 0.035f);
                     GameManager.Instance.soundInstance.PlaySoundOneShot(loseAudioClip);
                     GameManager.Instance.inputInstance.canMove = false;
                     canPlay = false;
@@ -118,6 +121,11 @@ namespace FruitDiet
             }
 
 
+        }
+
+        public void PlayBalanceBarPulse()
+        {
+            GameManager.Instance.uiInstance.PulseBalanceBar(balanceBarTransform.GetComponent<LeanPulse>(),balanceBarTransform,balanceValue);
         }
 
         #region Platform Functions
@@ -172,13 +180,36 @@ namespace FruitDiet
 
         private void WinLevelCheck()
         {
-            currentTime += Time.deltaTime;
+            if (GameManager.Instance.stateInstance.currentState == StateOfGame.OnBossFight)
+            {
+                currentTime += Time.deltaTime;
+                //update UI time
 
-            if (currentTime >= timeTheRoundLasts)
+                if (currentTime >= timeTheRoundLasts)
+                {
+                    hasWon = true;
+                    GameManager.Instance.soundInstance.PlayOneShotAudio(Camera.main.GetComponent<AudioSource>(), winSong);
+                    GameManager.Instance.uiInstance.EnableUIElement(winUI);
+                    GameManager.Instance.sceneInstance.PauseGame();
+                    GameManager.Instance.dataInstance.score.currentCalories += 1000;
+                    GameManager.Instance.soundInstance.SetAudioVolume(FindObjectOfType<AudioSource>(), 0.035f);
+                    GameManager.Instance.soundInstance.PlaySoundOneShot(winAudioClip);
+                    GameManager.Instance.inputInstance.canMove = true;
+                }
+            }
+        }
+
+        #endregion
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Player"))
             {
                 hasWon = true;
+                GameManager.Instance.soundInstance.PlayOneShotAudio(Camera.main.GetComponent<AudioSource>(), winSong);
                 GameManager.Instance.uiInstance.EnableUIElement(winUI);
                 GameManager.Instance.sceneInstance.PauseGame();
+                GameManager.Instance.dataInstance.score.currentCalories += 500;
                 GameManager.Instance.soundInstance.SetAudioVolume(FindObjectOfType<AudioSource>(), 0.035f);
                 GameManager.Instance.soundInstance.PlaySoundOneShot(winAudioClip);
                 GameManager.Instance.inputInstance.canMove = true;
@@ -186,7 +217,6 @@ namespace FruitDiet
 
         }
 
-        #endregion
     }
 }
 

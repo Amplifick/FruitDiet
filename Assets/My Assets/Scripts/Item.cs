@@ -46,12 +46,18 @@ namespace FruitDiet
         {
             if (other.CompareTag("Player"))
             {
+                if (!scenarioInstance.canPlay)
+                    return;
+
                 scenarioInstance.balanceValue += itemBalanceValue;
                 scenarioInstance.GetNewMarkerPosition();
+                scenarioInstance.PlayBalanceBarPulse();
 
                 if (GameManager.Instance.stateInstance.currentState != StateOfGame.OnBossFight)
                     scenarioInstance.spawnPositions[spawnPosIndex].hasItem = false;
 
+
+                GameManager.Instance.soundInstance.PlaySoundOneShot(GameManager.Instance.soundInstance.bankOfAudios[1].sound,.2f);
                 Destroy(gameObject);
             }
         }

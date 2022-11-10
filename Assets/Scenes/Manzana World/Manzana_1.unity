@@ -1888,7 +1888,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.425
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2651,18 +2651,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1711672182}
     m_Modifications:
-    - target: {fileID: 1090254417474339307, guid: 869d4a0a897bda94ab704a1c99087944, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090254417474339307, guid: 869d4a0a897bda94ab704a1c99087944, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 23.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2146308194542693667, guid: 869d4a0a897bda94ab704a1c99087944, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 489.9
-      objectReference: {fileID: 0}
     - target: {fileID: 4473952544292265793, guid: 869d4a0a897bda94ab704a1c99087944, type: 3}
       propertyPath: m_Name
       value: Pos_feedback
@@ -2754,18 +2742,6 @@ PrefabInstance:
     - target: {fileID: 7180274646898361174, guid: 869d4a0a897bda94ab704a1c99087944, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304524070572703317, guid: 869d4a0a897bda94ab704a1c99087944, type: 3}
-      propertyPath: m_text
-      value: "\xA1Muy bien!\n\n Has logrado mantener el equilibrio nutricional! \n\nContinuemos!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304524070572703317, guid: 869d4a0a897bda94ab704a1c99087944, type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304524070572703317, guid: 869d4a0a897bda94ab704a1c99087944, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 869d4a0a897bda94ab704a1c99087944, type: 3}
@@ -5069,6 +5045,7 @@ GameObject:
   - component: {fileID: 1817084754}
   - component: {fileID: 1817084756}
   - component: {fileID: 1817084755}
+  - component: {fileID: 1817084757}
   m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
@@ -5085,7 +5062,7 @@ RectTransform:
   m_GameObject: {fileID: 1817084753}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.77, y: 0.77, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2147159122}
@@ -5135,6 +5112,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817084753}
   m_CullTransparentMesh: 1
+--- !u!114 &1817084757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817084753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdf9a6ea50fc2c4496205af91d278e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remainingPulses: -1
+  remainingTime: 0
+  timeInterval: 1e+29
+  timing: 0
+  pulseTransitions:
+    speed: -1
+    roots: []
+    aliases: []
+    targets: []
+    entries:
+    - root: {fileID: 4041465858134576, guid: be1fb768f6354454593602f699e932aa, type: 3}
+      speed: -1
+      aliases:
+      - Key: Scale
+        Obj: {fileID: 1817084754}
+  onPulse:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1826228901
 GameObject:
   m_ObjectHideFlags: 0
@@ -5247,6 +5254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1851727448}
   - component: {fileID: 1851727449}
+  - component: {fileID: 1851727450}
   m_Layer: 3
   m_Name: Scenario Handler
   m_TagString: Untagged
@@ -5282,6 +5290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fcdcbb974e971e479795c5832afb5ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  balanceBarTransform: {fileID: 1817084754}
   markerTransform: {fileID: 2147159122}
   balanceValue: 0
   player: {fileID: 287113626}
@@ -5307,215 +5316,35 @@ MonoBehaviour:
   winUI: {fileID: 754078343}
   loseAudioClip: {fileID: 8300000, guid: f75bb7792a8719848b94fed912ea42b0, type: 3}
   winAudioClip: {fileID: 8300000, guid: 4ae3058be96652c478edbdaaeccd125f, type: 3}
+  winSong: {fileID: 8300000, guid: 059281825a4402540a6557b3c1f123d3, type: 3}
   canPlay: 1
   hasWon: 0
---- !u!1 &1912277591
-GameObject:
+--- !u!61 &1851727450
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1912277592}
-  - component: {fileID: 1912277596}
-  - component: {fileID: 1912277595}
-  - component: {fileID: 1912277594}
-  - component: {fileID: 1912277593}
-  m_Layer: 5
-  m_Name: NextScene
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1912277592
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1912277591}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 754078344}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -166.20001, y: 26.099976}
-  m_SizeDelta: {x: 130, y: 130}
-  m_Pivot: {x: 0, y: 0}
---- !u!114 &1912277593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1912277591}
+  m_GameObject: {fileID: 1851727447}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5db359aae20a9d418a9e5a183c03238, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneNameToLoad: Manzana_2
-  audioSource: {fileID: 0}
-  audioClip: {fileID: 0}
-  timeToEnableUI: 0
-  inputField: {fileID: 0}
-  changeScene: 1
-  changeToOnTutorialState: 0
-  changeToOnGameState: 0
-  changeToOnBossState: 0
-  changeToOnMenuState: 0
-  reloadScene: 0
-  playSound: 0
-  enableAfterTime: 0
-  reloadSceneAndEnableInput: 0
-  resumeGame: 1
---- !u!114 &1912277594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1912277591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81fef0563e898f74f87bcb68d10688aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1912277595}
-  interactableTransitions:
-    speed: -1
-    roots: []
-    aliases: []
-    targets: []
-    entries:
-    - root: {fileID: 0}
-      speed: -1
-      aliases: []
-  nonInteractableTransitions:
-    speed: -1
-    roots: []
-    aliases: []
-    targets: []
-    entries:
-    - root: {fileID: 0}
-      speed: -1
-      aliases: []
-  onInteractable:
-    m_PersistentCalls:
-      m_Calls: []
-  onNonInteractable:
-    m_PersistentCalls:
-      m_Calls: []
-  expectedInteractable: 1
-  requiredButtons: -1
-  multiDown: 0
-  dragThreshold: 10
-  normalTransitions:
-    speed: -1
-    roots: []
-    aliases: []
-    targets: []
-    entries:
-    - root: {fileID: 0}
-      speed: -1
-      aliases: []
-  downTransitions:
-    speed: -1
-    roots: []
-    aliases: []
-    targets: []
-    entries:
-    - root: {fileID: 0}
-      speed: -1
-      aliases: []
-  clickTransitions:
-    speed: -1
-    roots: []
-    aliases: []
-    targets: []
-    entries:
-    - root: {fileID: 0}
-      speed: -1
-      aliases: []
-  onDown:
-    m_PersistentCalls:
-      m_Calls: []
-  onClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1912277595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1912277591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Density: 1
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cc082fe8e7618144fa94353a75d93b0f, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1912277596
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1912277591}
-  m_CullTransparentMesh: 1
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 200, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4, y: 11}
+  m_EdgeRadius: 0
 --- !u!1 &2006543315
 GameObject:
   m_ObjectHideFlags: 0

@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Alias: Scale
   Data:
-    Duration: 0.2
+    Duration: 0.4
     Target: {fileID: 0}
     Value: {x: 0.87, y: 0.87}
     Ease: 100
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Alias: Scale
   Data:
-    Duration: 0.2
+    Duration: 0.4
     Target: {fileID: 0}
     Value: {x: 0.77, y: 0.77}
     Ease: 500

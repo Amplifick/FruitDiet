@@ -29,6 +29,15 @@ namespace FruitDiet
 
         #region Balance Bar Functions
 
+        public void PulseBalanceBar(LeanPulse leanPulse, RectTransform barTransform, float balanceValue)
+        {
+            leanPulse.Pulse();
+            //incline bar
+            float incrementRotationRate = 2.7f / 600;
+            float rotationValue = incrementRotationRate * balanceValue;
+            //Vector3 newRotation = new Vector3(0,0, rotationValue);
+            barTransform.rotation = Quaternion.Euler(0,0, rotationValue);
+        }
         
         public void UpdateMarkerPosition(RectTransform markerPosition, Vector3 newPosition)
         {
@@ -113,20 +122,15 @@ namespace FruitDiet
         #endregion
 
         #region Tutorial
-        public void KeyPressed(Image image, Sprite newIcon, GameObject outlineVFX, LeanToggle leanToggle)
+        public void KeyPressed(Image image, Sprite newIcon, LeanToggle leanToggle)
         {
             image.sprite = newIcon;
             leanToggle.On = true;
-            if (outlineVFX)
-                outlineVFX.SetActive(true);
         }
 
-        public void KeyReleased(Image image, Sprite newIcon, GameObject outlineVFX, LeanToggle leanToggle)
+        public void KeyReleased(LeanToggle leanToggle)
         {
-            image.sprite = newIcon;
             leanToggle.On = false;
-            if (outlineVFX)
-                outlineVFX.SetActive(false);
         }
         #endregion
 

@@ -43,7 +43,7 @@ namespace FruitDiet
             source.volume = volume;
         }
 
-        public void PlaySoundOneShot(Sound sound)
+        public void PlaySoundOneShot(Sound sound, float volume)
         {
             if (CanPlaySound(sound))
             {
@@ -54,6 +54,7 @@ namespace FruitDiet
                     oneShotAudioGameObject.transform.SetParent(transform);
                 }
 
+                oneShotAudioSource.volume = volume;
                 oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
             }
 

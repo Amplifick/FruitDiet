@@ -2327,10 +2327,12 @@ MonoBehaviour:
   changeToOnTutorialState: 0
   changeToOnGameState: 0
   changeToOnBossState: 0
+  changeToOnMenuState: 0
   reloadScene: 0
   playSound: 1
   enableAfterTime: 0
   reloadSceneAndEnableInput: 0
+  resumeGame: 0
 --- !u!114 &762805080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3094,10 +3096,12 @@ MonoBehaviour:
   changeToOnTutorialState: 1
   changeToOnGameState: 0
   changeToOnBossState: 0
+  changeToOnMenuState: 0
   reloadScene: 0
   playSound: 1
   enableAfterTime: 0
   reloadSceneAndEnableInput: 0
+  resumeGame: 0
 --- !u!1 &805348500
 GameObject:
   m_ObjectHideFlags: 0
@@ -4598,7 +4602,7 @@ RectTransform:
   m_GameObject: {fileID: 1227106236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.77, y: 0.77, z: 0.77}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 221749950}
@@ -4664,9 +4668,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfKey: 3
-  unpressedSprite: {fileID: 21300000, guid: 3af9ff592981d11439f7b23b029a1284, type: 3}
-  pressedSprite: {fileID: 21300000, guid: e254add896bd2254089a34f36a5eb61c, type: 3}
-  outlineVFX: {fileID: 0}
+  unpressedSprite: {fileID: 21300000, guid: f5993c43386226d419d43e7dca9abd5d, type: 3}
+  pressedSprite: {fileID: 21300000, guid: 13f53ed733a7e234a9e00e83e546aa30, type: 3}
   wPressed: 0
   aPressed: 0
   sPressed: 0
@@ -4691,7 +4694,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3af9ff592981d11439f7b23b029a1284, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f5993c43386226d419d43e7dca9abd5d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -4738,7 +4741,7 @@ RectTransform:
   m_GameObject: {fileID: 1254897701}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.77, y: 0.77, z: 0.77}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 221749950}
@@ -4804,9 +4807,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfKey: 1
-  unpressedSprite: {fileID: 21300000, guid: cb692f6aeb2874341a0a3d5b7463bd10, type: 3}
-  pressedSprite: {fileID: 21300000, guid: 2e5c437e25bdabc48ad96ff39640fc28, type: 3}
-  outlineVFX: {fileID: 0}
+  unpressedSprite: {fileID: 21300000, guid: 060bdfc9caac9574c85a8c9fe415c998, type: 3}
+  pressedSprite: {fileID: 21300000, guid: b26e5b2b1d3234d439a164a24ddec241, type: 3}
   wPressed: 0
   aPressed: 0
   sPressed: 0
@@ -4831,7 +4833,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cb692f6aeb2874341a0a3d5b7463bd10, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 060bdfc9caac9574c85a8c9fe415c998, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -5062,10 +5064,12 @@ MonoBehaviour:
   changeToOnTutorialState: 0
   changeToOnGameState: 0
   changeToOnBossState: 0
+  changeToOnMenuState: 0
   reloadScene: 0
   playSound: 0
   enableAfterTime: 0
   reloadSceneAndEnableInput: 0
+  resumeGame: 0
 --- !u!1 &1267618631
 GameObject:
   m_ObjectHideFlags: 0
@@ -5623,10 +5627,12 @@ MonoBehaviour:
   changeToOnTutorialState: 0
   changeToOnGameState: 0
   changeToOnBossState: 0
+  changeToOnMenuState: 0
   reloadScene: 0
   playSound: 1
   enableAfterTime: 0
   reloadSceneAndEnableInput: 0
+  resumeGame: 0
 --- !u!114 &1424673981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5962,7 +5968,7 @@ RectTransform:
   m_GameObject: {fileID: 1510168616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.77, y: 0.77, z: 0.77}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 221749950}
@@ -6028,9 +6034,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfKey: 2
-  unpressedSprite: {fileID: 21300000, guid: 48741e3c180fa774d937218c2d4d5329, type: 3}
-  pressedSprite: {fileID: 21300000, guid: 1199695dd5edad04c8e5f400d1a98a9c, type: 3}
-  outlineVFX: {fileID: 0}
+  unpressedSprite: {fileID: 21300000, guid: d06c42bf566410f49b57210f68a7d5e3, type: 3}
+  pressedSprite: {fileID: 21300000, guid: c6a936d4000e74f48ab1e5c332c53549, type: 3}
   wPressed: 0
   aPressed: 0
   sPressed: 0
@@ -6055,7 +6060,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 48741e3c180fa774d937218c2d4d5329, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d06c42bf566410f49b57210f68a7d5e3, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -7082,8 +7087,8 @@ RectTransform:
   m_GameObject: {fileID: 1707503742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.77, y: 0.77, z: 0.77}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 221749950}
   m_RootOrder: 0
@@ -7148,9 +7153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfKey: 0
-  unpressedSprite: {fileID: 21300000, guid: 8ca542e6f13161e479ae62ea8b3242a5, type: 3}
-  pressedSprite: {fileID: 21300000, guid: 6aba37359091c8847bde6fcb7c6db358, type: 3}
-  outlineVFX: {fileID: 0}
+  unpressedSprite: {fileID: 21300000, guid: ad800f112d5450846b35c5450e162bba, type: 3}
+  pressedSprite: {fileID: 21300000, guid: b6582f670149678429155b80df249140, type: 3}
   wPressed: 0
   aPressed: 0
   sPressed: 0
@@ -7175,7 +7179,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8ca542e6f13161e479ae62ea8b3242a5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad800f112d5450846b35c5450e162bba, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -8286,10 +8290,12 @@ MonoBehaviour:
   changeToOnTutorialState: 0
   changeToOnGameState: 0
   changeToOnBossState: 0
+  changeToOnMenuState: 0
   reloadScene: 1
   playSound: 0
   enableAfterTime: 0
   reloadSceneAndEnableInput: 0
+  resumeGame: 0
 --- !u!114 &1959987281
 MonoBehaviour:
   m_ObjectHideFlags: 0
