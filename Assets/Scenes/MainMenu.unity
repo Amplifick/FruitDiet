@@ -203,7 +203,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xA1INICIAR EL JUEGO!"
+  m_text: INICIAR EL JUEGO!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3c76a25b72f09ee4aaf77882a9b331e7, type: 2}
   m_sharedMaterial: {fileID: -2655013944974298171, guid: 3c76a25b72f09ee4aaf77882a9b331e7, type: 2}

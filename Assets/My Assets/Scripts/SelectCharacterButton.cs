@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Lean.Gui;
+using FruitDiet;
 
 public class SelectCharacterButton : MonoBehaviour
 {
     [SerializeField] private LeanWindow myCharacterInfo;
     [SerializeField] private LeanWindow otherCharacterInfo;
+
+    [SerializeField] private Sprite newContainerImage;
+    [SerializeField] private LeanWindow characterUnlockedUI;
 
     public void EnableCharacterInfo()
     {
@@ -21,7 +26,9 @@ public class SelectCharacterButton : MonoBehaviour
 
     public void BuyCharacter()
     {
-        //should be an interface for this new character
+        GetComponent<Image>().sprite = newContainerImage;
+        GameManager.Instance.dataInstance.score.currentCalories -= 1000;
+        characterUnlockedUI.TurnOn();
     }
 
     public void SelectCharacterToPlay()

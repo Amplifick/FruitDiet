@@ -34,7 +34,7 @@ namespace FruitDiet
             leanPulse.Pulse();
             //incline bar
             float incrementRotationRate = 2.7f / 600;
-            float rotationValue = incrementRotationRate * balanceValue;
+            float rotationValue = incrementRotationRate * -balanceValue;
             //Vector3 newRotation = new Vector3(0,0, rotationValue);
             barTransform.rotation = Quaternion.Euler(0,0, rotationValue);
         }

@@ -1,6 +1,7 @@
 using Lean.Gui;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace FruitDiet
@@ -35,6 +36,7 @@ namespace FruitDiet
         private float currentTime;
 
         [Header("UI Elements")]
+        public TextMeshProUGUI timeText;
         public GameObject greenOverlay;
         public GameObject yellowOverlay;
         public GameObject loseUI;
@@ -73,7 +75,11 @@ namespace FruitDiet
                 WinLevelCheck();
 
             if (GameManager.Instance.stateInstance.currentState == StateOfGame.OnBossFight)
+            {
+                timeText.text = (int)currentTime + "";
                 return;
+            }
+
 
             if (Vector3.Distance(player.transform.position, lastEndPosition) < PLAYER_DISTANCE_SPAWN)
             {
