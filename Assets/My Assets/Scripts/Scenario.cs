@@ -76,7 +76,7 @@ namespace FruitDiet
 
             if (GameManager.Instance.stateInstance.currentState == StateOfGame.OnBossFight)
             {
-                timeText.text = (int)currentTime + "";
+                timeText.text = 60 - (int)currentTime + "";
                 return;
             }
 
@@ -100,8 +100,8 @@ namespace FruitDiet
                 if (canPlay)
                 {
                     GameManager.Instance.uiInstance.EnableUIElement(loseUI);
-                    GameManager.Instance.soundInstance.SetAudioVolume(Camera.main.GetComponent<AudioSource>(), 0.035f);
                     GameManager.Instance.soundInstance.PlaySoundOneShot(loseAudioClip);
+                    GameManager.Instance.soundInstance.SetAudioVolume(Camera.main.GetComponent<AudioSource>(), 0.035f);          
                     GameManager.Instance.inputInstance.canMove = false;
                     canPlay = false;
                     return;
